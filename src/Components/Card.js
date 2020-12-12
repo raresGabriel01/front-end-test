@@ -1,28 +1,27 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import './Card.css'
+
 function Card(props) {
-	console.log(props)
-	let ms = parseInt(props.data.date)
 	
-	let date = (new Date(ms)).toLocaleString()
+	const [hovered, setHovered] = useState(false)
 	
+
+	let timestamp = parseInt(props.data.date)
+	let date = (new Date(timestamp * 1000)).toLocaleString()
 	let formatedDate = format(date)
 	
-	/*
-	
-		----------------> I don't actually understand the date format that is given by the API
 
-		Initially, i thought it was a TIMESTAMP
 
-		But it returns 19 January, 1970 instead of 25November 2020
-		I'm really confused right now
-
-	*/
 	return (
 				
-		<div className="card" onMouseEnter = {learnMore}>
+		<div className="card" onMouseEnter = {learnMore} onMouseLeave = {learnLess} onClick ={() => {console.log(props.data.id); props.showPopUp(props.data.id)}}>
 			
-			<div className = "smallThumbnail" style={{backgroundImage: `url(${props.data.thumbnail.small})`}} id={`img${props.data.id}`}> </div>
+			<div className = "smallThumbnail" style={{backgroundImage: `url(${props.data.thumbnail.small})`,
+													  boxShadow: hovered ? "inset 0 0 0 1000px rgba(0,0,0,.5)" : "none"}} 
+													  id={`img${props.data.id}`}> 
+
+				{hovered?<span className="learnMore">Learn more</span>:""}
+			</div>
 			
 			<div className = "ball blue"> </div>
 			<div className = "ball yellow"> </div>
@@ -30,13 +29,19 @@ function Card(props) {
 			<p className = "cardText"> {props.data.content} </p>
 			<span className = "cardAuthor"> {props.data.author.name} - {props.data.author.role} </span>
 			<span className = "cardDate"> {formatedDate} </span>
+
 		</div>
 
 	)
 
-	function learnMore(e) {
+	
 
-		console.log(e.target)
+	function learnMore(e) {
+		setHovered(true)
+	}
+
+	function learnLess(e) {
+		setHovered(false)
 	}
 
 	function format(date) {
