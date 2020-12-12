@@ -1,7 +1,7 @@
 import React from 'react'
 import './PopUp.css'
 function PopUp(props) {
-	console.log(props)
+	
 	return(
 		<div className="cover">
 			<div className="popUp">

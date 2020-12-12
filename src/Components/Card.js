@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState} from 'react';
 import './Card.css'
 
 function Card(props) {
@@ -14,7 +14,7 @@ function Card(props) {
 
 	return (
 				
-		<div className="card" onMouseEnter = {learnMore} onMouseLeave = {learnLess} onClick ={() => {console.log(props.data.id); props.showPopUp(props.data.id)}}>
+		<div className="card" onMouseEnter = {learnMore} onMouseLeave = {learnLess} onClick ={() => { props.showPopUp(props.data.id)}}>
 			
 			<div className = "smallThumbnail" style={{backgroundImage: `url(${props.data.thumbnail.small})`,
 													  boxShadow: hovered ? "inset 0 0 0 1000px rgba(0,0,0,.5)" : "none"}} 
