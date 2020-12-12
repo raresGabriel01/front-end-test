@@ -3,10 +3,11 @@
 	left:50%;
 	top:50%;
 	transform:translate(-50%,-50%);
-	min-width:80vh;
-	min-height:80vh;
+	min-width:50vh;
+	min-height:50vh;
 	background-color:white;
 	z-index:3;
+	padding-bottom:20px;
 }
 .cover {
 	position:fixed;
@@ -53,9 +54,12 @@
 	border-radius:50%;
 	margin-left:20px;
 	vertical-align:middle;
+	
 }
 
 .popUp > span.author {
 	color:lightgrey;
 	margin-left:20px;
+	margin-bottom:20px;
+
 }

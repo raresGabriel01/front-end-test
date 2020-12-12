@@ -1,6 +1,17 @@
 .grid {
 	display:grid;
 	grid-template-columns:auto auto;
-	grid-column-gap: 50px;
-	grid-row-gap: 50px;
+	grid-column-gap: 30px;
+	grid-row-gap: 30px;
+}
+
+@media only screen and (max-width:900px) {
+	.grid {
+		grid-template-columns: auto;
+	}
+	body {padding:100px;}
+}
+
+@media only screen and (max-width:768px) {
+	body {padding:50px;}
 }
